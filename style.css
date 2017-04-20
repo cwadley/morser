@@ -1,0 +1,39 @@
+.lightcontainer {
+	position: relative;
+	min-height: 200px;
+}
+
+.lighthousing:before {
+	position: absolute;
+	top: 40%;
+	left: 40%;
+	content: ' \25CF';
+	font-size: 250px;
+	color: #A3A3A3;
+	z-index: 1;
+}
+
+.lightsocket:before {
+	position: absolute;
+	top: 40%;
+	left: 40%;
+	content: ' \25CF';
+	font-size: 200px;
+	color: #636363;
+	z-index: 2;
+}
+
+.lightbulb:before {
+	position: absolute;
+	top: 40%;
+	left: 40%;
+	content: ' \25CF';
+	font-size: 200px;
+	color: yellow;
+	z-index: 3;
+}
+
+.error {
+	color: red;
+	visibility: hidden;
+}

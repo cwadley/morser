@@ -1,9 +1,17 @@
-function sleep(ms) {
-	return new Promise(resolve => setTimeout(resolve, ms));
-}
+var morseLight, morsePatterns;
+// morse.js must also be loaded in order to access the morsePatterns variable
 
-function loadMorsePatterns(patternJSON) {
-	return JSON.parse(patternJSON);
+async function flashIt() {
+	document.getElementById("errorText").style.visibility = "hidden";
+	var inputText = document.getElementById("textInput").value;
+	var ditLength = document.getElementById("ditLength").value;
+	var dahLength = document.getElementById("dahLength").value;
+	var letterTimeout = document.getElementById("letterTimeout").value;
+	var wordTimeout = document.getElementById("wordTimeout").value;
+	if (isEmptyString(inputText) || isEmptyString(ditLength) || isEmptyString(dahLength) || isEmptyString(letterTimeout) || isEmptyString(wordTimeout)) {
+		document.getElementById("errorText").style.visibility = "visible";
+	}
+	await morser(inputText, morsePatterns, ditLength, dahLength, letterTimeout, wordTimeout, morseLight);
 }
 
 async function morser(string, morsePatterns, ditLengthMs, dahLengthMs,
@@ -39,6 +47,18 @@ async function flashLight(timeout, light) {
 	light.style.visibility = "hidden";
 }
 
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function isNullOrUndefined(variable) {
 	return (variable === null) || (variable === undefined);
 }
+
+function isEmptyString(string) {
+	return string === "";
+}
+
+(function() {
+	morseLight = document.getElementById("light");
+})();

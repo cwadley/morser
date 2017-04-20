@@ -1,4 +1,4 @@
-{"code":"morse", "chars":[
+var morsePatterns = {"code":"morse", "chars":[
 	"A", 
 	"B", 
 	"C", 
@@ -111,4 +111,4 @@
 	".-..-.",
 	".--.-.",
 	"-...-"
-]}
+]};
