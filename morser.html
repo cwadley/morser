@@ -7,45 +7,61 @@
 </head>
 <body>
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3 col-sm-12">
+		<div class="col-md-6 col-md-offset-3 col-xs-12 textalign-center">
+			<h1>Morser</h1>
+			<h3>A visual morse code tool</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3 col-xs-12">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3">
-					<div class="lightcontainer">
-						<span class="lighthousing"></span>
-						<span class="lightsocket"></span>
-						<span class="lightbulb" id="light"></span>
-					</div>
+					<span class="lightbulb center" id="light">&#9679;</span>
 				</div>
 			</div>
 			<form>
 				<div class="form-group row">
-					<textarea id="textInput" class="col-md-8 col-sm-8" placeholder="Enter the text to be converted to morse..." required></textarea>
+					<div class="col-md-12">
+						<textarea id="textInput" class="center" placeholder="Enter the text to be converted to morse..." required></textarea>
+					</div>
 				</div>
 				<div class="form-group row">
-					<label for="ditLength" class="col-sm-2 col-form-label col-form-label-sm">Dit Length (ms)</label>
-					<div class="col-md-2 col-sm-2">
+					<div class="col-md-3 textalign-right">
+						<label for="ditLength" class="col-form-label col-form-label-sm">Dit Length (ms)</label>
+					</div>
+					<div class="col-md-2">
 						<input type="text" class="form-control form-control-sm" id="ditLength" value="100" required>
 					</div>
-					<label for="dahLength" class="col-sm-2 col-form-label col-form-label-sm">Dah Length (ms)</label>
-					<div class="col-md-2 col-sm-2">
+					<div class="col-md-3 textalign-right">
+						<label for="dahLength" class="col-form-label col-form-label-sm">Dah Length (ms)</label>
+					</div>
+					<div class="col-md-2">
 						<input type="text" class="form-control form-control-sm" id="dahLength" value="300" required>
 					</div>
+					<div class="col-md-2"></div>
 				</div>
 				<div class="form-group row">
-					<label for="letterTimeout" class="col-sm-2 col-form-label col-form-label-sm">Pause Between Letters (ms)</label>
-					<div class="col-md-2 col-sm-2">
-						<input type="text" class="form-control form-control-sm" id="letterTimeout" value="200" required>
+					<div class="col-md-3 textalign-right">
+						<label for="letterTimeout" class="col-form-label col-form-label-sm">Pause Between Letters (ms)</label>
 					</div>
-					<label for="wordTimeout" class="col-sm-2 col-form-label col-form-label-sm">Pause Between Words (ms)</label>
-					<div class="col-md-2 col-sm-2">
-						<input type="text" class="form-control form-control-sm" id="wordTimeout" value="500" required>
+					<div class="col-md-2">
+						<input type="text" class="form-control form-control-sm" id="letterTimeout" value="100" required>
 					</div>
+					<div class="col-md-3 textalign-right">
+						<label for="wordTimeout" class="col-form-label col-form-label-sm">Pause Between Words (ms)</label>
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control form-control-sm" id="wordTimeout" value="400" required>
+					</div>
+					<div class="col-md-2"></div>
 				</div>
 				<div class="form-group row">
-					<button type="button" class="btn btn-primary" onclick="flashIt()">Flash it!</button>
+					<div class="col-md-3 col-md-offset-5">
+						<button type="button" class="btn btn-primary center" onclick="flashIt()">Flash It!</button>
+					</div>
 				</div>
 				<div class="row">
-					<h4 id="errorText" class="error">Invalid values, ensure integer values are entered for times and text is entered in the box</h4>
+					<h4 id="errorText" class="error textalign-center">Invalid values, ensure integer values are entered for times and text is entered in the box</h4>
 				</div>
 			</form>
 		</div>

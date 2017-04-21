@@ -1,4 +1,6 @@
 var morseLight, morsePatterns;
+var onColor = "yellow";
+var offColor = "#636363";
 // morse.js must also be loaded in order to access the morsePatterns variable
 
 async function flashIt() {
@@ -30,10 +32,10 @@ async function morser(string, morsePatterns, ditLengthMs, dahLengthMs,
 async function flasher(pattern, ditLengthMs, dahLengthMs, betweenLetterTimeoutMs, light) {
 	for (var i = 0, len = pattern.length; i < len; i++) {
 		if (pattern[i] === '.') {
-			await flashLight(ditLengthMs, light);
+			await flashLight(ditLengthMs, light, onColor, offColor);
 		}
 		else {
-			await flashLight(dahLengthMs, light);
+			await flashLight(dahLengthMs, light, onColor, offColor);
 		}
 
 		if (i < len - 1)
@@ -41,10 +43,10 @@ async function flasher(pattern, ditLengthMs, dahLengthMs, betweenLetterTimeoutMs
 	}
 }
 
-async function flashLight(timeout, light) {
-	light.style.visibility = "visible";
+async function flashLight(timeout, light, onColor, offColor) {
+	light.style.color = onColor;
 	await sleep(timeout);
-	light.style.visibility = "hidden";
+	light.style.color = offColor;
 }
 
 function sleep(ms) {
