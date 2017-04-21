@@ -40,13 +40,29 @@ async function morser(string, morsePatterns, ditLengthMs, dahLengthMs,
 					  betweenLetterTimeoutMs, betweenWordTimeoutMs, light) {
 	for (var i = 0, len = string.length; i < len; i++)
 	{
-		var patternIndex = morsePatterns.chars.indexOf(string[i].toUpperCase());
-		var letterPattern = morsePatterns.patterns[patternIndex];
-		if (!isNullOrUndefined(letterPattern)) {
-			await flasher(letterPattern, ditLengthMs, dahLengthMs, betweenLetterTimeoutMs, light);
+		// break between words
+		if (string[i] === " ") {
+			await sleep(betweenWordTimeoutMs);
 		}
-		await sleep(betweenWordTimeoutMs);
+		// see if we have a new paragraph and if so, insert the new paragraph prosign
+		else if (string[i] === "\n" && string[i+1] === "\n") {
+			var patternIndex = morsePatterns.chars.indexOf("\u2029");
+			var letterPattern = morsePatterns.patterns[patternIndex];
+			await flasher(letterPattern, ditLengthMs, dahLengthMs, betweenLetterTimeoutMs, light);
+			i++;
+		}
+		// transmit the letter
+		else {
+			var patternIndex = morsePatterns.chars.indexOf(string[i].toUpperCase());
+			var letterPattern = morsePatterns.patterns[patternIndex];
+			if (!isNullOrUndefined(letterPattern)) {
+				await flasher(letterPattern, ditLengthMs, dahLengthMs, betweenLetterTimeoutMs, light);
+			}
+		}
 	}
+
+	// end of message prosign
+	await flasher("\u0003", ditLengthMs, dahLengthMs, betweenLetterTimeoutMs, light);
 }
 
 async function flasher(pattern, ditLengthMs, dahLengthMs, betweenLetterTimeoutMs, light) {
