@@ -1,0 +1,53 @@
+/* morser.css
+ This file is part of Morser, a visual morse code tool
+ Converts standard latin text into morse code and displays it visually as a light.
+ 
+ Copyright (C) 2017  Clint Wadley
+ 					 clint@clintwadley.com
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, version 3 of the License.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+h1, h3, h4, label, .copyright {
+	font-family: 'Raleway', sans-serif;
+}
+
+.lightbulb {
+	font-size: 200px;
+	color: #636363;
+}
+
+.error {
+	color: red;
+	visibility: hidden;
+}
+
+.textalign-center {
+	text-align: center;
+}
+
+.textalign-right {
+	text-align: right;
+}
+
+.center {
+	display: block;
+	margin: auto;
+	width: 95%;
+	padding: 10px;
+}
+
+.copyright {
+	font-size: x-small;
+	color: #b2b4b7;
+}
