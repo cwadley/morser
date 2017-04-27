@@ -30,26 +30,49 @@ async function flashIt() {
 	var dahLength = document.getElementById("dahLength").value;
 	var letterTimeout = document.getElementById("letterTimeout").value;
 	var wordTimeout = document.getElementById("wordTimeout").value;
+	var nlProsign = document.getElementById("includeNewline").checked;
+	var npProsign = document.getElementById("includeNewParagraph").checked;
+	var eomProsign = document.getElementById("includeEndOfMessage").checked;
+	var highlighting = document.getElementById("liveHighlighting").checked;
+	var textToHighlight = document.getElementById("highlightText");
 	if (isEmptyString(inputText) || isEmptyString(ditLength) || isEmptyString(dahLength) || isEmptyString(letterTimeout) || isEmptyString(wordTimeout)) {
 		document.getElementById("errorText").style.visibility = "visible";
 	}
-	await morser(inputText, morsePatterns, ditLength, dahLength, letterTimeout, wordTimeout, morseLight);
+	else {
+		await morser(inputText, morsePatterns, ditLength, dahLength, letterTimeout, wordTimeout,
+				 	 morseLight, nlProsign, npProsign, eomProsign, highlighting, textToHighlight);
+	}
 }
 
 async function morser(string, morsePatterns, ditLengthMs, dahLengthMs,
-					  betweenLetterTimeoutMs, betweenWordTimeoutMs, light) {
+					  betweenLetterTimeoutMs, betweenWordTimeoutMs, light, 
+					  nlProsign, npProsign, eomProsign, highlighting, textToHighlight) {
+
+	textToHighlight.innerHTML = "";
+	var textHead = "<h4><span class=\"textHighlighted\">";
+
 	for (var i = 0, len = string.length; i < len; i++)
 	{
+		if (highlighting) {
+			textToHighlight.innerHTML = textHead + string.slice(0, i + 1) + "</span>" + string.slice(i + 1) + "</h4>";
+		}
+
 		// break between words
 		if (string[i] === " ") {
 			await sleep(betweenWordTimeoutMs);
 		}
 		// see if we have a new paragraph and if so, insert the new paragraph prosign
-		else if (string[i] === "\n" && string[i+1] === "\n") {
+		else if (npProsign && (string[i] === "\n" && string[i+1] === "\n")){
 			var patternIndex = morsePatterns.chars.indexOf("\u2029");
 			var letterPattern = morsePatterns.patterns[patternIndex];
 			await flasher(letterPattern, ditLengthMs, dahLengthMs, betweenLetterTimeoutMs, light);
 			i++;
+		}
+		// include newline prosign
+		else if (nlProsign && (string[i] === "\n")) {
+			var patternIndex = morsePatterns.chars.indexOf(string[i]);
+			var letterPattern = morsePatterns.patterns[patternIndex];
+			await flasher(letterPattern, ditLengthMs, dahLengthMs, betweenLetterTimeoutMs, light);
 		}
 		// transmit the letter
 		else {
@@ -62,7 +85,11 @@ async function morser(string, morsePatterns, ditLengthMs, dahLengthMs,
 	}
 
 	// end of message prosign
-	await flasher("\u0003", ditLengthMs, dahLengthMs, betweenLetterTimeoutMs, light);
+	if (eomProsign) {
+		var patternIndex = morsePatterns.chars.indexOf("\u0003");
+		var pattern = morsePatterns.patterns[patternIndex];
+		await flasher(pattern, ditLengthMs, dahLengthMs, betweenLetterTimeoutMs, light);
+	}
 }
 
 async function flasher(pattern, ditLengthMs, dahLengthMs, betweenLetterTimeoutMs, light) {
@@ -73,16 +100,15 @@ async function flasher(pattern, ditLengthMs, dahLengthMs, betweenLetterTimeoutMs
 		else {
 			await flashLight(dahLengthMs, light, onColor, offColor);
 		}
-
-		if (i < len - 1)
-			await sleep(betweenLetterTimeoutMs);
 	}
+	await sleep(betweenLetterTimeoutMs);
 }
 
 async function flashLight(timeout, light, onColor, offColor) {
 	light.style.color = onColor;
 	await sleep(timeout);
 	light.style.color = offColor;
+	await sleep(timeout);
 }
 
 function sleep(ms) {

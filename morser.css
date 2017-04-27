@@ -51,3 +51,7 @@ h1, h3, h4, label, .copyright {
 	font-size: x-small;
 	color: #b2b4b7;
 }
+
+.textHighlighted {
+	background-color: yellow;
+}

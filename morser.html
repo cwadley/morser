@@ -41,6 +41,11 @@
 				</div>
 			</div>
 			<form>
+				<div class="row">
+					<div class="col-md-12">
+						<p id="highlightText" class="textalign-center"></p>
+					</div>
+				</div>
 				<div class="form-group row">
 					<div class="col-md-12">
 						<textarea id="textInput" class="center" placeholder="Enter the text to be converted to morse..." required></textarea>
@@ -75,6 +80,34 @@
 						<input type="text" class="form-control form-control-sm" id="wordTimeout" value="400" required>
 					</div>
 					<div class="col-md-2"></div>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-3 textalign-right">
+						<label for="includeNewline" class="col-form-label col-form-label-sm">Include new line prosign</label>
+					</div>
+					<div class="col-md-2">
+						<input type="checkbox" class="form-control form-control-sm" id="includeNewline" checked>
+					</div>
+					<div class="col-md-3 textalign-right">
+						<label for="includeNewParagraph" class="col-form-label col-form-label-sm">Include new paragraph prosign</label>
+					</div>
+					<div class="col-md-2">
+						<input type="checkbox" class="form-control form-control-sm" id="includeNewParagraph" checked>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-3 textalign-right">
+						<label for="includeEndOfMessage" class="col-form-label col-form-label-sm">Include end of message prosign</label>
+					</div>
+					<div class="col-md-2">
+						<input type="checkbox" class="form-control form-control-sm" id="includeEndOfMessage" checked>
+					</div>
+					<div class="col-md-3 textalign-right">
+						<label for="liveHighlighting" class="col-form-label col-form-label-sm">Live text highlighting</label>
+					</div>
+					<div class="col-md-2">
+						<input type="checkbox" class="form-control form-control-sm" id="liveHighlighting" checked>
+					</div>
 				</div>
 				<div class="form-group row">
 					<div class="col-md-3 col-md-offset-5">
