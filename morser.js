@@ -105,9 +105,9 @@ async function flasher(pattern, ditLengthMs, dahLengthMs, betweenLetterTimeoutMs
 }
 
 async function flashLight(timeout, light, onColor, offColor) {
-	light.style.color = onColor;
+	light.style.background = onColor;
 	await sleep(timeout);
-	light.style.color = offColor;
+	light.style.background = offColor;
 	await sleep(timeout);
 }
 

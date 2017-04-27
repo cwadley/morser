@@ -23,8 +23,10 @@ h1, h3, h4, label, .copyright {
 }
 
 .lightbulb {
-	font-size: 200px;
-	color: #636363;
+	background: #636363;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
 }
 
 .error {
@@ -43,8 +45,11 @@ h1, h3, h4, label, .copyright {
 .center {
 	display: block;
 	margin: auto;
-	width: 95%;
 	padding: 10px;
+}
+
+.width95 {
+	width: 95%;
 }
 
 .copyright {
@@ -54,4 +59,8 @@ h1, h3, h4, label, .copyright {
 
 .textHighlighted {
 	background-color: yellow;
+}
+
+#flashItButton {
+	display: block;
 }
