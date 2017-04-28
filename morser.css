@@ -22,11 +22,20 @@ h1, h3, h4, label, .copyright {
 	font-family: 'Raleway', sans-serif;
 }
 
+.background {
+	background-color: #f2f2f2;
+}
+
+.foreground {
+	background-color: #ffffff;
+}
+
 .lightbulb {
 	background: #636363;
-	width: 150px;
-	height: 150px;
+	width: 130px;
+	height: 130px;
 	border-radius: 50%;
+	margin: 20px 20px 20px 20px;
 }
 
 .error {
