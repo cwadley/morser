@@ -51,78 +51,190 @@
 	</div>
 	<div class="row background">
 		<div class="col-md-6 col-md-offset-3 col-xs-12 foreground">
+			<div class="row">
+				<!--<div class="btn-group">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<span class="caret"></span>
+					</button>
+
+					<ul class="dropdown-menu">
+						<li><a href="#">Simple</a></li>
+						<li><a href="#">Advanced</a></li>
+						<li><a href="#">Manual</a></li>
+					</ul>
+
+				</div>-->
+				
+			</div>
 			<form>
-				<div class="form-group row">
-					<div class="col-md-12">
-						<textarea id="textInput" class="center width95" placeholder="Enter the text to be converted to morse..." required></textarea>
+				<div class="row">
+					<div class="form-group row">
+						<div class="col-md-12">
+							<textarea id="textInput" class="center width95" placeholder="Enter the text to be converted to morse..." required></textarea>
+						</div>
 					</div>
-				</div>
-				<div class="form-group row foreground">
-					<div class="col-md-3 textalign-right">
-						<label for="ditLength" class="col-form-label col-form-label-sm">Dit Length (ms)</label>
+
+					<div class="container">
+						<ul id="tabs" class="nav nav-pills">
+							<li class="active">
+								<a href="#simpleSettings" data-toggle="tab">Simple</a>
+							</li>
+							<li>
+								<a href="#advancedSettings" data-toggle="tab">Advanced</a>
+							</li>
+							<li>
+								<a href="#manualSettings" data-toggle="tab">Manual</a>
+							</li>
+
+						</ul>
 					</div>
-					<div class="col-md-2">
-						<input type="text" class="form-control form-control-sm" id="ditLength" value="100" required>
-					</div>
-					<div class="col-md-3 textalign-right">
-						<label for="dahLength" class="col-form-label col-form-label-sm">Dah Length (ms)</label>
-					</div>
-					<div class="col-md-2">
-						<input type="text" class="form-control form-control-sm" id="dahLength" value="300" required>
-					</div>
-					<div class="col-md-2"></div>
-				</div>
-				<div class="form-group row foreground">
-					<div class="col-md-3 textalign-right">
-						<label for="letterTimeout" class="col-form-label col-form-label-sm">Pause Between Letters (ms)</label>
-					</div>
-					<div class="col-md-2">
-						<input type="text" class="form-control form-control-sm" id="letterTimeout" value="100" required>
-					</div>
-					<div class="col-md-3 textalign-right">
-						<label for="wordTimeout" class="col-form-label col-form-label-sm">Pause Between Words (ms)</label>
-					</div>
-					<div class="col-md-2">
-						<input type="text" class="form-control form-control-sm" id="wordTimeout" value="400" required>
-					</div>
-					<div class="col-md-2"></div>
-				</div>
-				<div class="form-group row foreground">
-					<div class="col-md-3 textalign-right">
-						<label for="includeNewline" class="col-form-label col-form-label-sm">Include new line prosign</label>
-					</div>
-					<div class="col-md-2">
-						<input type="checkbox" class="form-control form-control-sm" id="includeNewline" checked>
-					</div>
-					<div class="col-md-3 textalign-right">
-						<label for="includeNewParagraph" class="col-form-label col-form-label-sm">Include new paragraph prosign</label>
-					</div>
-					<div class="col-md-2">
-						<input type="checkbox" class="form-control form-control-sm" id="includeNewParagraph" checked>
-					</div>
-				</div>
-				<div class="form-group row foreground">
-					<div class="col-md-3 textalign-right">
-						<label for="includeEndOfMessage" class="col-form-label col-form-label-sm">Include end of message prosign</label>
-					</div>
-					<div class="col-md-2">
-						<input type="checkbox" class="form-control form-control-sm" id="includeEndOfMessage" checked>
-					</div>
-					<div class="col-md-3 textalign-right">
-						<label for="liveHighlighting" class="col-form-label col-form-label-sm">Live text highlighting</label>
-					</div>
-					<div class="col-md-2">
-						<input type="checkbox" class="form-control form-control-sm" id="liveHighlighting" checked>
-					</div>
-				</div>
-				<div class="form-group row foreground">
-					<div class="col-md-4 col-md-offset-4">
-						<div type="button" id="flashItButton" class="btn btn-primary btn-lg center" onclick="flashIt()">Flash It!</div>
+
+					<div class="tab-content clearfix">
+						<div id="simpleSettings" class="tab-pane active">
+							<div class="form-group row">
+								<div class="col-md-3 textalign-right">
+									<label for="wpm" class="col-form-label col-form-label-sm">Words per minute</label>
+								</div>
+								<div class="col-md-2">
+									<input type="text" class="form-control form-control-sm" id="wpm" value="15" required>
+								</div>
+								<div class="col-md-3 textalign-right">
+									<label for="farnsworth" class="col-form-label col-form-label-sm">Farnsworth timing</label>
+								</div>
+								<div class="col-md-2">
+									<input type="checkbox" class="form-control form-control-sm" id="farnsworth">
+								</div>
+							</div>
+						</div> <!-- End of simple settings -->
+
+						<div id="advancedSettings" class="tab-pane">
+							<div class="form-group row">
+								<div class="col-md-3 textalign-right">
+									<label for="unitLength" class="col-form-label col-form-label-sm">Unit Length (ms)</label>
+								</div>
+								<div class="col-md-2">
+									<input type="text" class="form-control form-control-sm" id="unitLength" value="120" required>
+								</div>
+								<div class="col-md-3 textalign-right">
+									<label for="unitsPerDit" class="col-form-label col-form-label-sm">Units Per Dit</label>
+								</div>
+								<div class="col-md-2">
+									<input type="text" class="form-control form-control-sm" id="unitsPerDit" value="1" required>
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-3 textalign-right">
+									<label for="unitsPerDah" class="col-form-label col-form-label-sm">Units Per Dah</label>
+								</div>
+								<div class="col-md-2">
+									<input type="text" class="form-control form-control-sm" id="unitsPerDah" value="3" required>
+								</div>
+								<div class="col-md-3 textalign-right">
+									<label for="unitsBetweenElements" class="col-form-label col-form-label-sm">Units Between Elements</label>
+								</div>
+								<div class="col-md-2">
+									<input type="text" class="form-control form-control-sm" id="unitsBetweenElements" value="1" required>
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-3 textalign-right">
+									<label for="unitsBetweenLetters" class="col-form-label col-form-label-sm">Units Between Letters</label>
+								</div>
+								<div class="col-md-2">
+									<input type="text" class="form-control form-control-sm" id="unitsBetweenLetters" value="3" required>
+								</div>
+								<div class="col-md-3 textalign-right">
+									<label for="unitsBetweenWords" class="col-form-label col-form-label-sm">Units Between Words</label>
+								</div>
+								<div class="col-md-2">
+									<input type="text" class="form-control form-control-sm" id="unitsBetweenWords" value="7" required>
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+						</div> <!-- End of advanced settings -->
+
+						<div id="manualSettings" class="tab-pane">
+							<div class="form-group row">
+								<div class="col-md-3 textalign-right">
+									<label for="ditLength" class="col-form-label col-form-label-sm">Dit Length (ms)</label>
+								</div>
+								<div class="col-md-2">
+									<input type="text" class="form-control form-control-sm" id="ditLength" value="120" required>
+								</div>
+								<div class="col-md-3 textalign-right">
+									<label for="dahLength" class="col-form-label col-form-label-sm">Dah Length (ms)</label>
+								</div>
+								<div class="col-md-2">
+									<input type="text" class="form-control form-control-sm" id="dahLength" value="360" required>
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-3 textalign-right">
+									<label for="elementTimeout" class="col-form-label col-form-label-sm">Pause Between Elements (ms)</label>
+								</div>
+								<div class="col-md-2">
+									<input type="text" class="form-control form-control-sm" id="elementTimeout" value="120" required>
+								</div>
+								<div class="col-md-3 textalign-right">
+									<label for="letterTimeout" class="col-form-label col-form-label-sm">Pause Between Letters (ms)</label>
+								</div>
+								<div class="col-md-2">
+									<input type="text" class="form-control form-control-sm" id="letterTimeout" value="360" required>
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-3 textalign-right">
+									<label for="wordTimeout" class="col-form-label col-form-label-sm">Pause Between Words (ms)</label>
+								</div>
+								<div class="col-md-2">
+									<input type="text" class="form-control form-control-sm" id="wordTimeout" value="840" required>
+								</div>
+							</div>
+						</div> <!--End of manual settings -->
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-6 col-ms-offset-3 col-xs-12 foreground">
-						<h4 id="errorText" class="error textalign-center">Invalid values, ensure integer values are entered for times and text is entered in the box</h4>
+					<div class="form-group row">
+						<div class="col-md-3 textalign-right">
+							<label for="includeNewline" class="col-form-label col-form-label-sm">Include new line prosign</label>
+						</div>
+						<div class="col-md-2">
+							<input type="checkbox" class="form-control form-control-sm" id="includeNewline" checked>
+						</div>
+						<div class="col-md-3 textalign-right">
+							<label for="includeNewParagraph" class="col-form-label col-form-label-sm">Include new paragraph prosign</label>
+						</div>
+						<div class="col-md-2">
+							<input type="checkbox" class="form-control form-control-sm" id="includeNewParagraph" checked>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-3 textalign-right">
+							<label for="includeEndOfMessage" class="col-form-label col-form-label-sm">Include end of message prosign</label>
+						</div>
+						<div class="col-md-2">
+							<input type="checkbox" class="form-control form-control-sm" id="includeEndOfMessage" checked>
+						</div>
+						<div class="col-md-3 textalign-right">
+							<label for="liveHighlighting" class="col-form-label col-form-label-sm">Live text highlighting</label>
+						</div>
+						<div class="col-md-2">
+							<input type="checkbox" class="form-control form-control-sm" id="liveHighlighting" checked>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4 col-md-offset-4">
+							<div type="button" id="flashItButton" class="btn btn-primary btn-lg center" onclick="flashIt()">Flash It!</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-ms-offset-3 col-xs-12">
+							<h4 id="errorText" class="error textalign-center">Invalid values, ensure integer values are entered for times and text is entered in the box</h4>
+						</div>
 					</div>
 				</div>
 			</form>
