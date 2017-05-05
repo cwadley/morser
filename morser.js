@@ -161,7 +161,7 @@ async function morser(string, morsePatterns, timing, light, nlProsign,
 			await flasher(letterPattern, timing.ditLength, timing.dahLength, timing.elementTimeout, timing.letterTimeout, light);
 		}
 		// transmit the letter
-		else {
+		else if (string[i] !== "\n") {
 			var patternIndex = morsePatterns.chars.indexOf(string[i].toUpperCase());
 			var letterPattern = morsePatterns.patterns[patternIndex];
 			if (!isNullOrUndefined(letterPattern)) {
