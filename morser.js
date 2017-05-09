@@ -211,5 +211,9 @@ function isEmptyString(string) {
 
 (function() {
 	morseLight = document.getElementById("light");
+    $('#farnsworthTooltip').popover({
+        placement : 'top',
+        trigger : 'click'
+    });
 })();
 

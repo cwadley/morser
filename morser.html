@@ -25,6 +25,7 @@
 	<link rel="stylesheet" href="morser.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 	<a href="https://github.com/cwadley/morser"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
@@ -32,7 +33,6 @@
 	<div class="row background">
 		<div class="col-md-6 col-md-offset-3 col-xs-12 textalign-center foreground">
 			<h1>Morser</h1>
-			<h3>A visual morse code tool</h3>
 		</div>
 	</div>
 	<div class="row background">
@@ -84,7 +84,8 @@
 									<input type="text" class="form-control form-control-sm" id="wpm" value="15" required>
 								</div>
 								<div class="col-md-3 textalign-right">
-									<label for="farnsworth" class="col-form-label col-form-label-sm">Farnsworth timing</label>
+									<label class="col-form-label col-form-label-sm">Farnsworth timing&nbsp;
+										<i id="farnsworthTooltip" class="fa fa-question-circle" data-toggle="popover" data-html="true" data-content="<p class=&quot;black textalign-center&quot;>ARRL specifies that Farnsworth timing should be used for morse communications of 18 WPM or less.<br /><a href=&quot;http://www.arrl.org/files/file/Technology/x9004008.pdf&quot;>http://www.arrl.org/files/file/<br />Technology/x9004008.pdf</a></p>"></i></label>
 								</div>
 								<div class="col-md-2">
 									<input type="checkbox" class="form-control form-control-sm clean-checkbox" id="farnsworth">

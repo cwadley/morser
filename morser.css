@@ -18,7 +18,7 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-h1, h3, h4, label, .copyright {
+h1, h3, h4, label, .copyright, p {
 	font-family: 'Raleway', sans-serif;
 }
 
@@ -96,4 +96,8 @@ h1, h3, h4, label, .copyright {
 .stack .clean-checkbox:focus {
 	-webkit-box-shadow: none;
 	box-shadow: none;
+}
+
+.black {
+	color: black;
 }
