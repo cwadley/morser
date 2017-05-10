@@ -215,5 +215,10 @@ function isEmptyString(string) {
         placement : 'top',
         trigger : 'click'
     });
+    $('body').on('click', function(e) {
+    	if ($(e.target).data('toggle') !== 'popover' && $(e.target).parents('.popover.in').length === 0) {
+    		$("#farnsworthTooltip").popover('hide');
+    	}
+    });
 })();
 
